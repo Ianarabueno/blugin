@@ -1,0 +1,108 @@
+<!-- menu.html -->
+<div class="menu-toggle" onclick="toggleMenu()">
+    <span>&#9776;</span>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<nav class="menu" id="menu">
+    <img src="{{ url_for('static', filename='assets/logo.jpg') }}" alt="Minha Logo" class="menu-logo">
+    <ul>
+        <li><a href="{{ url_for('dashboard') }}"><i class="fas fa-home icon"></i> Painel</a></li>
+        <li><a href="{{ url_for('list_users') }}"><i class="fas fa-users icon"></i> Usuários</a></li>
+        <li><a href="{{ url_for('list_category') }}"><i class="fas fa-list icon"></i> Categorias</a></li>
+        <li><a href="{{ url_for('list_company' )}}"><i class="fas fa-building icon"></i> Empresas</a></li>
+        <li><a href="#"><i class="fas fa-file-contract icon"></i> Contratos</a></li>
+        <li><a href="{{ url_for('index' )}}"><i class="fas fa-sign-out-alt icon"></i> Sair</a></li>
+    </ul>
+</nav>
+
+<style>
+  .menu-toggle {
+    position: relative;
+    top: 20px;
+    left: 20px;
+    z-index: 9999;
+    cursor: pointer;
+    background-color: rgb(0,170,166);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    box-shadow: 0px 0px 10px 0px rgb(219, 210, 212);
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    left: -200px; /* Inicialmente, o menu está fora da tela */
+    width: 200px;
+    height: 100%;
+    background:linear-gradient(#e35d76,#bc5f6a);
+    padding-top: 50px; /* Espaçamento acima dos itens do menu */
+    transition: left 0.3s ease-in-out; /* Transição suave ao mostrar/esconder */
+}
+
+.menu.active {
+    left: 0; /* Quando ativo, o menu é movido para dentro da tela */
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu ul li {
+    padding: 10px 0;
+    text-align: left; /* Alinhamento do texto à esquerda */
+}
+
+.menu ul li a {
+    display: flex; /* Adicionando flexbox */
+    align-items: center; /* Alinhando itens verticalmente */
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out;
+}
+
+.menu ul li a:hover {
+    color: #007bff;
+}
+
+/* Estilizando os ícones */
+.menu ul li a .icon {
+    margin-right: 10px; /* Espaçamento entre o ícone e o texto */
+}
+
+/* Ajuste a logo dentro do menu */
+.menu-logo {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px; /* Espaçamento abaixo da logo */
+    border-radius: 30px;
+    border-color: #e35d76;
+}
+</style>
+
+<!-- No seu arquivo HTML -->
+<script>
+    function toggleMenu() {
+        var menu = document.getElementById('menu');
+        var content = document.getElementById('content');
+        var body = document.body;
+
+        menu.classList.toggle('active'); // Adiciona ou remove a classe 'active' do menu
+       
+        if (menu.classList.contains('active')) {
+            content.style.marginLeft = '200px';// Impede a rolagem horizontal do corpo quando o menu está aberto
+            
+        } else {
+            content.style.marginLeft = '0'; // Restaura a rolagem horizontal do corpo quando o menu está fechado
+            
+        }
+    }
+</script>

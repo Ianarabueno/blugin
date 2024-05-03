@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Empresa</title>
+</head>
+<body>
+    {% include 'menu.html' %}
+    <h1>Editar Empresa</h1>
+    <form action="{{ url_for('edit_company', idcad_empresa=idcad_empresa) }}" method="post">
+        <!-- Campos do formulário para editar empresa -->
+        <label for="cad_cnpj">CNPJ:</label>
+        <input type="text" id="cad_cnpj" name="cad_cnpj" value="{{ company.cad_cnpj }}" required><br>
+
+        <label for="cad_ie">IE:</label>
+        <input type="text" id="cad_ie" name="cad_ie" value="{{ company.cad_ie }}"><br>
+
+        <label for="cad_razao_social">Razão Social:</label>
+        <input type="text" id="cad_razao_social" name="cad_razao_social" value="{{ company.cad_razao_social }}" required><br>
+
+        <label for="cad_nome_fantasia">Nome Fantasia:</label>
+        <input type="text" id="cad_nome_fantasia" name="cad_nome_fantasia" value="{{ company.cad_nome_fantasia }}"><br>
+
+        <label for="cad_email">Email:</label>
+        <input type="email" id="cad_email" name="cad_email" value="{{ company.cad_email }}"><br>
+
+        <label for="cad_telefone">Telefone:</label>
+        <input type="text" id="cad_telefone" name="cad_telefone" value="{{ company.cad_telefone }}"><br>
+
+        <label for="cad_nome_contato">Nome do Contato:</label>
+        <input type="text" id="cad_nome_contato" name="cad_nome_contato" value="{{ company.cad_nome_contato }}"><br>
+
+        <label for="cad_funcao_contato">Função do Contato:</label>
+        <input type="text" id="cad_funcao_contato" name="cad_funcao_contato" value="{{ company.cad_funcao_contato }}"><br>
+
+        <label for="cad_website">Website:</label>
+        <input type="text" id="cad_website" name="cad_website" value="{{ company.cad_website }}"><br>
+
+        <label for="cad_facebook">Facebook:</label>
+        <input type="text" id="cad_facebook" name="cad_facebook" value="{{ company.cad_facebook }}"><br>
+
+        <label for="cad_whatsapp">WhatsApp:</label>
+        <input type="text" id="cad_whatsapp" name="cad_whatsapp" value="{{ company.cad_whatsapp }}"><br>
+
+        <label for="cad_instagram">Instagram:</label>
+        <input type="text" id="cad_instagram" name="cad_instagram" value="{{ company.cad_instagram }}"><br>
+
+        <label for="cad_cep">CEP:</label>
+        <input type="text" id="cad_cep" name="cad_cep" value="{{ company.cad_cep }}"><br>
+
+        <label for="cad_logradouro">Logradouro:</label>
+        <input type="text" id="cad_logradouro" name="cad_logradouro" value="{{ company.cad_logradouro }}"><br>
+
+        <label for="cad_bairro">Bairro:</label>
+        <input type="text" id="cad_bairro" name="cad_bairro" value="{{ company.cad_bairro }}"><br>
+
+        <label for="cad_cidade">Cidade:</label>
+        <input type="text" id="cad_cidade" name="cad_cidade" value="{{ company.cad_cidade }}"><br>
+
+        <label for="cad_uf">UF:</label>
+        <input type="text" id="cad_uf" name="cad_uf" value="{{ company.cad_uf }}"><br>
+
+        <label for="cad_numero_contato">Número de Contato:</label>
+        <input type="text" id="cad_numero_contato" name="cad_numero_contato" value="{{ company.cad_numero_contato }}"><br>
+
+        <label for="cad_categoria">Categoria:</label>
+        <input type="text" id="cad_categoria" name="cad_categoria" value="{{ company.cad_categoria }}"><br>
+
+        <label for="cad_password_hash">Senha Hash:</label>
+        <input type="password" id="cad_password_hash" name="cad_password_hash" value="{{ company.cad_password_hash }}"><br>
+
+        <label for="cad_password_salt">Senha Salt:</label>
+        <input type="password" id="cad_password_salt" name="cad_password_salt" value="{{ company.cad_password_salt }}"><br>
+
+        <label for="cad_observacao">Observação:</label>
+        <input type="text" id="cad_observacao" name="cad_observacao" value="{{ company.cad_observacao }}"><br>
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <button onclick="window.location.href='/list_company'">Fechar</button>
+</body>
+</html>

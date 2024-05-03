@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deletar Empresa</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    {% include 'menu.html' %}
+    <h1>Deletar Empresa</h1>
+    <p>Tem certeza que deseja deletar esta empresa "{{ company[3] }}"?</p>
+    <form action="{{ url_for('delete_company', id_empresa=company[0]) }}" method="post">
+        <button type="submit">Confirmar</button>
+        <a href="{{ url_for('list_company') }}">Cancelar</a>
+    </form>
+</body>
+</html>

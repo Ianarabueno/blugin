@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar Novo Usuário</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Adicionando Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-fp42KsRV8zl+wsk8Kjm6ZheL8zg5px1klg5Pb1i+UaTtzwTYTicqszxvwB26PcODpV8J7lLlM5NF/H8skPHpRQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        form {
+            display: grid;
+            gap: 20px;
+        }
+        label {
+            font-size: 16px;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        button[type="submit"],
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover,
+        button:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% include 'menu.html' %}
+        <h1>Criar Novo Usuário <i class="fas fa-user-plus"></i></h1>
+        <form action="{{ url_for('create_user') }}" method="post">
+            <!-- Campos do formulário para criar novo usuário -->
+            <label for="user_emp">Empresa <i class="fas fa-building"></i></label>
+            <input type="text" id="user_emp" name="user_emp" required>
+
+            <label for="user_nome">Nome <i class="fas fa-user"></i></label>
+            <input type="text" id="user_nome" name="user_nome" required>
+
+            <label for="user_cpf">CPF <i class="fas fa-id-card"></i></label>
+            <input type="text" id="user_cpf" name="user_cpf" required>
+
+            <label for="user_telefone">Telefone <i class="fas fa-phone"></i></label>
+            <input type="text" id="user_telefone" name="user_telefone" required>
+
+            <label for="user_contato">Contato <i class="fas fa-address-book"></i></label>
+            <input type="text" id="user_contato" name="user_contato" required>
+
+            <label for="user_whatsapp">WhatsApp <i class="fab fa-whatsapp"></i></label>
+            <input type="text" id="user_whatsapp" name="user_whatsapp">
+
+            <label for="user_cep">CEP <i class="fas fa-map-marker-alt"></i></label>
+            <input type="text" id="user_cep" name="user_cep" required>
+
+            <label for="user_endereco">Endereço <i class="fas fa-map-marker-alt"></i></label>
+            <input type="text" id="user_endereco" name="user_endereco" required>
+
+            <label for="user_nr_end">Número <i class="fas fa-sort-numeric-up"></i></label>
+            <input type="text" id="user_nr_end" name="user_nr_end" required>
+
+            <label for="user_bairro">Bairro <i class="fas fa-map-marker-alt"></i></label>
+            <input type="text" id="user_bairro" name="user_bairro" required>
+
+            <label for="user_cidade">Cidade <i class="fas fa-map-marker-alt"></i></label>
+            <input type="text" id="user_cidade" name="user_cidade" required>
+
+            <label for="user_uf">UF <i class="fas fa-map-marker-alt"></i></label>
+            <input type="text" id="user_uf" name="user_uf" required>
+
+            <label for="user_funcao">Função <i class="fas fa-user-tag"></i></label>
+            <input type="text" id="user_funcao" name="user_funcao" required>
+
+            <label for="user_email">Email <i class="fas fa-envelope"></i></label>
+            <input type="email" id="user_email" name="user_email" required>
+
+            <label for="user_password">Senha <i class="fas fa-lock"></i></label>
+            <input type="password" id="user_password" name="user_password" required>
+
+            <div class="button-group">
+                <button type="submit"><i class="fas fa-save"></i> Salvar</button>
+                <button onclick="window.location.href='/list_users'"><i class="fas fa-times"></i> Fechar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
