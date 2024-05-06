@@ -1,0 +1,74 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Create Company</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    {% include 'menu.html' %}
+<div class="form-container">
+    <section><h2>Criar Empresa</h2></section>
+    <form method="POST" action="{{ url_for('create_company') }}">
+        <div class="form-group">
+            <input type="text" name="cad_cnpj" required placeholder="CNPJ">
+            <input type="text" name="cad_ie" required placeholder="Inscrição Estadual">
+            <input type="text" name="cad_razao_social" required placeholder="Razão Social">
+            <input type="text" name="cad_nome_fantasia" required placeholder="Nome Fantasia">
+        </div>
+        <div class="form-group">
+            <input type="email" name="cad_email" required placeholder="Email">
+            <input type="text" name="cad_telefone" required placeholder="Telefone">
+            <input type="text" name="cad_nome_contato" required placeholder="Nome do Contato">
+            <input type="text" name="cad_funcao_contato" required placeholder="Função do Contato">            
+            
+        </div>
+        <div class="form-group">
+            <input type="url" name="cad_website" placeholder="Site">
+            <input type="text" name="cad_facebook" placeholder="Facebook">
+            <input type="text" name="cad_whatsapp" placeholder="Whatsapp">
+            <input type="text" name="cad_instagram" placeholder="Instagram">
+        </div>
+        <div class="form-group">
+            <input type="text" name="cad_cep" id="cad_cep" required placeholder="CEP">
+            <input type="text" name="cad_logradouro" id="cad_logradouro" required placeholder="Endereço">
+            <input type="text" name="cad_bairro" id="cad_bairro" placeholder="Bairro">
+            <input type="text" name="cad_cidade" id="cad_cidade" required placeholder="Cidade">
+            <input type="text" name="cad_uf" id="cad_uf" required placeholder="UF">
+        </div>
+        <div class="form-group">
+            <!--<input type="text" name="cad_telefone" required placeholder="Número do Contato 1">-->
+            <select name="cad_categoria">
+               <option value="option0">Selecione</option>
+                <option value="1">-> Barbearia</option>
+                <option value="2">-> Restaurante</option>
+                <option value="3">-> Mercearia</option>
+            </select>
+           <input type="password" name="cad_password_hash" required placeholder="Senha">
+            <!--<input type="password" name="cad_password_salt" required placeholder="Confirmar Senha">-->
+        </div>
+        <!--<div class="form-group">   
+            <input type="text" name="contact_function_1" placeholder="Função do Contato 1">
+            <input type="email" name="email_1" required placeholder="Email do Contato 1">
+            <input type="text" name="phone_contact1" required placeholder="Telefone do Contato 1">
+            <input type="text" name="contact_name_1" required placeholder="Nome do Contato 1">   
+        </div>-->
+        <div class="form-group">
+            <textarea name="cad_observacao" placeholder="Observações"></textarea>
+            <input type="file" name="logo" placeholder="Logo do Estabelecimento">
+        </div>
+        <div class="buttons-container">
+            <form class="button-form" action="/create_company" method="post">
+                <button type="submit" class="criar">Criar</button>
+            </form>
+            {% if confirmation %}
+            <div id="confirmation-message" class="alert alert-success">Cadastro Atualizado</div>
+            {% endif %}
+            <form class="button-form" action="/fechar_formulario" method="POST">
+                <button type="submit" class="fechar">Fechar</button>
+            </form>
+        </div>
+</form>
+</div>
+</body>
+</html>

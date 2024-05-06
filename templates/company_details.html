@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Destalhes da Empresa</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    {% include 'menu.html' %}
+    <div class="company-section">
+        <h1>Dados da Empresa</h1>
+        <div class="company-table-container">
+            <table class="company-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>CNPJ</th>
+                        <th>IE</th>
+                        <th>Razão Social</th>
+                        <th>Nome Fantasia</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Nome Contato</th>
+                        <th>Função Contato</th>
+                        <th>Website</th>
+                        <th>Facebook</th>
+                        <th>WhatsApp</th>
+                        <th>Instagram</th>
+                        <th>CEP</th>
+                        <th>Logradouro</th>
+                        <th>Bairro</th>
+                        <th>Cidade</th>
+                        <th>UF</th>
+                        <th>Número Contato</th>
+                        <th>Categoria</th>
+                        <th>Observação</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for company in companies %}
+                    <tr>
+                        <td>{{ company[0] }}</td>
+                        <td>{{ company[1] }}</td>
+                        <td>{{ company[2] }}</td>
+                        <td>{{ company[3] }}</td>
+                        <td>{{ company[4] }}</td>
+                        <td>{{ company[5] }}</td>
+                        <td>{{ company[6] }}</td>
+                        <td>{{ company[7] }}</td>
+                        <td>{{ company[8] }}</td>
+                        <td>{{ company[9] }}</td>
+                        <td>{{ company[10] }}</td>
+                        <td>{{ company[11] }}</td>
+                        <td>{{ company[12] }}</td>
+                        <td>{{ company[13] }}</td>
+                        <td>{{ company[14] }}</td>
+                        <td>{{ company[15] }}</td>
+                        <td>{{ company[16] }}</td>
+                        <td>{{ company[17] }}</td>
+                        <td>{{ company[18] }}</td>
+                        <td>{{ company[19] }}</td>
+                        <td>{{ company[20] }}</td>
+                        <!-- Adicione mais colunas conforme necessário -->
+                    </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

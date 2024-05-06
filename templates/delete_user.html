@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deletar Usuário</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    {% include 'menu.html' %}
+    <h1>Deletar Usuário</h1>
+    <p>Tem certeza que deseja deletar o usuário "{{ user.nome }}"?</p>
+    <form action="{{ url_for('delete_user', idusuario=user_id) }}" method="post">
+        <button type="submit">Confirmar</button>
+        <a href="{{ url_for('list_users') }}">Cancelar</a>
+    </form>
+</body>
+</html>

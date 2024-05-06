@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar Nova Categoria</title>
+    <!-- Adicionando Font Awesome -->
+
+</head>
+<body>
+    <div class="create-category-button">
+        <h1>Nova Categoria <i class="fas fa-category-plus"></i></h1>
+        <form action="{{ url_for('create_category') }}" method="post">
+            <label for="category_name">Nome da Categoria:</label>
+            <input type="text" id="category_name" name="category_name" placeholder="Category name" required>
+
+            <label for="category_description">Descrição da Categoria:</label>
+            <input type="text" id="category_description" name="category_description" placeholder="Category description" required>
+
+            
+        </form>
+    </div>
+</body>
+</html>

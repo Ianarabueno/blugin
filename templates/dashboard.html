@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Dashboard</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            overflow-x: hidden; /* Impede a rolagem horizontal */
+        }
+
+        .container {
+            width: 100%; /* Conteúdo da página ocupa 100% da largura */
+            transition: margin-left 0.3s ease; /* Adiciona uma transição suave */
+        }
+
+        .menu {
+            flex: 0 0 250px;
+            background-color: white;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+            margin-right: 20px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: none; /* Inicialmente oculto */
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .menu.active {
+            display: block; /* Mostra o menu quando a classe 'active' é adicionada */
+        }
+        
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .menu ul li {
+            margin-bottom: 10px;
+        }
+        
+        .menu ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .menu ul li a:hover {
+            color: #007bff;
+        }
+        
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+        }
+
+        .kpis-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 20px;
+            position: relative;
+        }
+
+        
+        .kpi {
+            position: relative;
+            width: calc(50% - 20px); /* Define a largura dos KPIs para 50% da largura do contêiner */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 20px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+            display: flex; /* Torna o contêiner flexível para permitir alinhamento vertical */
+            align-items: center; /* Alinha os elementos verticalmente */
+            justify-content: space-between; /* Alinha os itens ao longo do eixo principal (horizontalmente) */
+        }
+        
+        /* Defina cores de fundo diferentes para cada KPI */
+        .kpi:nth-child(1) {
+            background-color: #04a597; /* contratos ativos */
+            border-radius: 20PX;
+        }
+
+        .kpi:nth-child(2) {
+            background-color: #5f5ca2; /* Usuarios na plataforma */
+            border-radius: 20PX;
+        }
+
+        .kpi:nth-child(3) {
+            background-color: #3e74ab; /* vendedores */
+            border-radius: 20PX;
+        }
+
+        .kpi:nth-child(4) {
+            background-color: #1890ad; /* valores do contrato */
+            border-radius: 20PX;
+        }
+        
+        .kpi h3 {
+            margin: 0;
+        }
+        .kpi .icon {
+           
+            font-size: 24px; /* Defina o tamanho do ícone conforme necessário */
+        }
+        
+        .company-container{
+            display: block;
+        }
+
+    .company-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.company-container {
+    max-height: 400px; /* Altura máxima do contêiner */
+    overflow-y: auto; /* Habilita a barra de rolagem vertical quando necessário */
+    margin-bottom: 20px; /* Adiciona margem inferior para separar o botão */
+}
+.header {
+    display: flex; /* Use flexbox para alinhar itens horizontalmente */
+    justify-content: space-between; /* Alinha os itens horizontalmente, com espaço entre eles */
+    align-items: center; /* Alinha os itens verticalmente */
+}
+.company-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: calc(33.33% - 20px); /* Distribui as cartas em três colunas */
+}
+
+.company-name {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.company-description {
+    margin-top: 10px;
+}
+
+.create-company-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.create-company-button:hover {
+    background-color: #3e8e41;
+}
+
+    </style>
+</head>
+<body>
+   
+    {% include 'menu.html' %}
+    </div>
+    <div class="container" id="content">
+        <h1>Bem-vindo!</h1>
+        <div class="kpis-container">
+            <div class="kpi">
+                <span class="icon"><i class="fas fa-file-contract"></i></span>
+                 <h3>Contratos ativos</h3>
+                    <p>1</p>
+            </div>
+            <div class="kpi">
+                <span class="icon"><i class="fas fa-users"></i></span>
+                 <h3>Usuários na plataforma</h3>
+                   <p>{{ total_users }}</p>
+            </div>
+            <div class="kpi">
+                <span class="icon"><i class="fas fa-store"></i></span>
+                 <h3>Vendedores</h3>
+                  <p>0</p>
+            </div>
+            <div class="kpi">
+                <span class="icon"><i class="fas fa-money-bill-wave"></i></span>
+                 <h3>Valores de contratos</h3>
+                  <p>R$ 0,00</p>
+            </div>
+        </div>
+        <div class="companies-info">
+            <div class="header">
+                <h2>Empresas na plataforma</h2>
+                <a href="{{ url_for('create_company') }}" class="create-company-button">Criar empresa</a>
+            </div>
+            <div class="company-container">
+                <div class="company-cards">
+                    {% for company in companies %}
+                    <div class="company-card">
+                        <h3 class="company-name">{{ company[0] }}</h3>
+                        <p class="company-description">{{ company[1] }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div> 
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            var content = document.getElementById('content'); // Selecionando o elemento com ID "content"
+
+            menu.classList.toggle('active'); // Adiciona ou remove a classe 'active' do menu
+           
+            if (menu.classList.contains('active')) {
+                content.style.marginLeft = '200px'; // Impede a rolagem horizontal do corpo quando o menu está aberto
+            } else {
+                content.style.marginLeft = '0'; // Restaura a rolagem horizontal do corpo quando o menu está fechado
+            }
+        }
+    </script> 
+</body>
+</html>
