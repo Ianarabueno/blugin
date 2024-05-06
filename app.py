@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, render_template_string,flash
-import mysql.connector
-from user import user_app
+from flask import Flask, render_template, request, redirect, url_for, render_template_string 
+import mysql.connector 
+from user import user_app 
 
 
 
@@ -17,6 +17,7 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 app = Flask(__name__, static_folder='static', static_url_path='/static')
+
 
 @app.route('/fechar_formulario', methods=['POST'])
 def fechar_formulario():
